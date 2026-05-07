@@ -35,7 +35,7 @@ def Buscar():
           'fire': 'img/fire.png',
           'water': 'img/water.png',
           'grass': 'img/grass.png',
-          'electric': 'img/eletric.png',
+          'electric': 'img/electric.png',
           'ice': 'img/ice.png',
           'fighting': 'img/fighting.png',
           'poison': 'img/poison.png',
@@ -117,6 +117,7 @@ def Buscar():
             label_stats_base.grid(row=contador, column=1, sticky='w', padx=10, pady=2)
 
         def Voltar():
+            pokemon.delete(0, 'end')
             pagina2.forget()
             janela.geometry('300x400')
             pagina1.pack(pady=20, padx=20, fill='both', expand=True)
