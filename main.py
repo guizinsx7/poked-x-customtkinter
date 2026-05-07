@@ -94,9 +94,8 @@ def Buscar():
         label_types.pack(side='left', padx=10)
 
         for i in poke.types:
-            type_name = i.type.name
-            if type_name in types:
-                image_type = ctk.CTkImage(light_image=Image.open(types[type_name]), dark_image=Image.open(types[type_name]), size=(40, 40))            
+            if i.type.name in types:
+                image_type = ctk.CTkImage(light_image=Image.open(types[i.type.name]), dark_image=Image.open(types[i.type.name]), size=(40, 40))            
                 label_type = ctk.CTkLabel(frame_tipos, image=image_type, text='')
                 label_type.image = image_type
                 label_type.pack(side='left', padx=5)
