@@ -24,6 +24,9 @@ pokemon.pack(pady=10)
 
 def Buscar():
     pokemon_pesquisado = pokemon.get().lower()
+
+    ability_common = []
+    ability_hidden = []
     
     try:
         poke = pb.pokemon(pokemon_pesquisado)
@@ -64,7 +67,7 @@ def Buscar():
         response_front_shiny = requests.get(poke.sprites.front_shiny)
         img_data_front_shiny = Image.open(BytesIO(response_front_shiny.content))
 
-        janela.geometry('400x650')
+        janela.geometry('400x700')
         
         pagina1.pack_forget() 
         
@@ -120,6 +123,19 @@ def Buscar():
         
         botao_voltar = ctk.CTkButton(pagina2, text="Voltar", width=80, height=30, command=Voltar)
         botao_voltar.pack(side='bottom', anchor='w', padx=10, pady=10)
+
+        for i in poke.abilities:
+            if i.is_hidden == False:
+                ability_common.append(i.ability.name)
+            else:
+                ability_hidden.append(i.ability.name)
+        
+        label_ability_common = ctk.CTkLabel(pagina2, text=f'HABILIDADES COMUNS: {', '.join(ability_common).upper()}')
+        label_ability_common.pack(pady=5)
+
+        if len(ability_hidden) > 0:
+            label_ability_hidden = ctk.CTkLabel(pagina2, text=f'HABILIDADES ESCONDIDAS: {', '.join(ability_hidden).upper()}')
+            label_ability_hidden.pack(pady=(10, 15))
 
 
     except Exception as e:
