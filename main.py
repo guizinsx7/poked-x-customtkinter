@@ -145,5 +145,4 @@ botao = ctk.CTkButton(pagina1, text='Procurar', command=Buscar, width=200, heigh
 botao.pack(pady=20)
 
 
-
 janela.mainloop()
